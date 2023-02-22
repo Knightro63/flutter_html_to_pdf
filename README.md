@@ -82,5 +82,24 @@ or if you want to use the image ***File*** object
 
 Many images inside your document can significantly affect the final file size so I suggest to use [flutter_image_compress](https://github.com/OpenFlutter/flutter_image_compress) plugin.
 
+#Web
+For web please add the following code to your index.html page.
+
+```html
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js" integrity="sha512vDKWohFHe2vkVWXHp3tKvIxxXg0pJxeid5eo+UjdjME3DBFBn2F8yWOE0XmiFcFbXxrEOR1JriWEno5Ckpn15A==" crossorigin="anonymous"></script>  
+
+  <script type="text/javascript">
+    function html2pdf1(element,options,callback){
+      html2pdf()
+      .from(element)
+      .set(JSON.parse(options))
+      .toPdf().output('blob').then(async (blob) => {
+        var data = await new Response(blob).arrayBuffer();
+        var uint = new Uint8Array(data);
+        callback(uint);
+      });
+    }
+  </script>
+```
 
 
